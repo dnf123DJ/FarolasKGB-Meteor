@@ -1,0 +1,75 @@
+<head>
+  <title>farolasKGB</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />
+</head>
+
+<body class="bg-secondary">
+  <center>
+    <div class="border border-danger w-50 p-3 jumbotron bg-dark primario">
+      <img
+        src="https://seeklogo.com/images/K/KGB-logo-B0B0907CA8-seeklogo.com.png"
+        class="img-fluid"
+      />
+      <hr class="my-4 w-50 p-1">
+        {{>buscarfarola}}   
+    </div>
+    <p></p>
+    {{>contenidofarola}}
+    <div class="border border-danger w-50 p-3 jumbotron bg-light">
+      {{#each farolas}} {{> farola}} {{/each}}
+    </div>
+  </center>
+   
+</body>
+
+<template name="farola">
+  <img
+    src="https://image.flaticon.com/icons/svg/804/804573.svg"
+    alt="farola"
+    height="42"
+    width="42"
+  />
+  {{id}}
+</template>
+
+<template name="buscarfarola">
+  <form class="buscar" method="POST">
+    <div class="form-group">
+      <label class="text-danger font-weight-bold">ID Farola</label>
+      <input
+        type="text"
+        class="form-control w-50 p-3"
+        name = "id"
+        aria-describedby="textHelp"
+        placeholder="Ej:1234abc"
+        autofocus
+      />
+      <small id="textHelp" class="form-text text-muted"
+        >Selecciona un id de una farola mostrada.</small
+      >
+    </div>
+    <button type="submit" class="btn btn-danger">Buscar</button>
+  </form>
+</template>
+
+<template name="contenidofarola">
+  <div class="border border-danger w-50 p-3 jumbotron bg-light" id="contenido-farola" style="display: none">
+    <form method="POST">
+      <div class="form-group">
+        <label class="text-danger font-weight-bold">Mensaje Secreto</label>
+        <textarea class="form-control w-75 " name="nota" rows="3" placeholder="Mensaje Secreto..." id="textarea-farola"></textarea>
+        <label class="text-danger font-weight-bold" id="id-farola">ID Farola: {{id}}</label>
+      </div>
+      <button type="submit" class="btn btn-danger escribir">Escribir</button>
+      <button type="submit" class="btn btn-danger eliminar">Eliminar</button>
+      <button type="submit" class="btn btn-danger salir">Salir</button>
+    </form>
+  </div>
+</template>
+
+

@@ -34,7 +34,7 @@
     height="42"
     width="42"
   />
-  {{id}}
+  <label class="text-danger font-weight-bold farola-text" id="{{id}}">{{id}}</label>
 </template>
 
 <template name="buscarfarola">
@@ -45,6 +45,7 @@
         type="text"
         class="form-control w-50 p-3"
         name = "id"
+        id="input-id"
         aria-describedby="textHelp"
         placeholder="Ej:1234abc"
         autofocus

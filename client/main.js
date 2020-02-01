@@ -6,6 +6,10 @@ var res;
 
 Todos = new Mongo.Collection('Farolas');
 
+function asignar(id){
+  document.getElementById("input-id").value = id;
+}
+
 Template.body.helpers({
   farolas: function(){
     a = Todos.find();
@@ -58,5 +62,9 @@ Template.body.events({
   'click .salir': function(){
     document.getElementById("contenido-farola").style.display = "none";
     return false;
-  }
+  },
+  'click .farola-text': function(){
+    document.getElementById("input-id").value = this.id;
+    return false;
+  },
 });
